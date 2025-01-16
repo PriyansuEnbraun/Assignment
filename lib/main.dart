@@ -1,5 +1,4 @@
 import 'package:assignment/features/auth/login/View/LoginPage.dart';
-import 'package:assignment/features/auth/signup/View/SignUpPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
