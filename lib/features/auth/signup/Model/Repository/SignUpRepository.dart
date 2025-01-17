@@ -6,7 +6,7 @@ class UserRepository {
   final DatabaseService _databaseService = DatabaseService();
 
   // Add User
-  Future<int> addUser(Users user) async {
+  Future<String> addUser(Users user) async {
     try {
       return await _databaseService.addUser(user);
     } catch (e) {
@@ -14,14 +14,7 @@ class UserRepository {
     }
   }
 
-  // Fetch all users
-  Future<List<Users>> fetchUsers() async {
-    try {
-      return await _databaseService.fetchUsers();
-    } catch (e) {
-      throw Exception('Error fetching users from database: $e');
-    }
-  }
+
 
   // Update User
   Future<int> updateUser(Users user) async {

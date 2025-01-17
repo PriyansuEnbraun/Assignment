@@ -36,14 +36,13 @@ class SignUpViewModel extends ChangeNotifier {
   }
 
 
-  Future<void> addUser(String fullName, String loginId, String password) async {
+  Future<String?> addUser(String fullName, String loginId, String password) async {
     try {
       Users user = Users(
           fullName: fullName, loginId: loginId, password: password);
-      await _userRepository.addUser(user);
-      print('User added successfully');
+      return await _userRepository.addUser(user);
     } catch (e) {
-      print('Error adding user: $e');
+      return ('Error adding user: $e');
     }
   }
 }

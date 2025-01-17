@@ -198,15 +198,15 @@ class _LoginpageState extends State<Loginpage> {
                           borderRadius: BorderRadius.circular(10)),
                       backgroundColor: Colors.blue,
                       padding: EdgeInsets.all(10)),
-                  onPressed: () {
+                  onPressed: () async{
                     String? error = LoginViewModel().validateLogin(
                         loginIdController.text, passwordController.text);
                     if (error != null) {
                       Utils.showSnackBar(context, error,Colors.red);
                     } else {
-                      bool? isLoggedIn = LoginViewModel().checkInUserData(
+                      bool? doesExist= await LoginViewModel().checkUserExists(
                           loginIdController.text, passwordController.text);
-                      if (isLoggedIn == true) {
+                      if (doesExist == true) {
                         Utils.showSnackBar(context, "Login Successfully",Colors.green);
                         Navigator.push(
                             context,

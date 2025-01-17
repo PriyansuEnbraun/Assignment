@@ -1,10 +1,9 @@
-import 'package:assignment/features/auth/signup/Model/Entities/SignUpEntity.dart';
+import 'package:assignment/features/auth/login/Model/Repository/LoginRepository.dart';
 import 'package:flutter/material.dart';
-
-import '../../signup/Model/Tables/Users.dart';
 
 class LoginViewModel extends ChangeNotifier {
 
+  final LoginRepository _loginRepository = LoginRepository();
 
   String? validateLogin(String loginId, String password) {
     if (loginId.isEmpty) {
@@ -25,13 +24,16 @@ class LoginViewModel extends ChangeNotifier {
     return null;
   }
 
-  bool? checkInUserData(String loginId, String password) {
-    for(var user in Users.sampleList){
-      if(user.loginId==loginId && user.password==password){
-        return true;
-      }
+  //check user exist
+
+  Future<bool?> checkUserExists(String loginId, String password) async {
+    try {
+      return await _loginRepository.checkUserExists( loginId, password);
+    } catch (e) {
+      print('Error checking user: $e');
     }
-    return false ;
+    return null;
   }
+
 
 }

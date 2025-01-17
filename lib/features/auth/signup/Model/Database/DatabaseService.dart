@@ -28,7 +28,7 @@ class DatabaseService {
         await db.execute('''
           CREATE TABLE users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            loginId TEXT NOT NULL,
+            loginId TEXT NOT NULL UNIQUE,
             password TEXT NOT NULL,
             fullName TEXT NOT NULL
           )
@@ -37,15 +37,33 @@ class DatabaseService {
     );
   }
 
-  Future<int> addUser(Users user) async {
+  Future<String> addUser(Users user) async {
+    // Check ID already exists
     final db = await database;
-    return await db.insert('users', user.toJson());
+    final result = await db.query(
+      'users',
+      where: 'loginId = ?',
+      whereArgs: [user.loginId],
+    );
+
+    if (result.isNotEmpty) {
+      //ID already exists
+      return 'Login ID is taken. Please create a new one.';
+    }
+    // login_id does not exist
+    await db.insert('users', user.toJson());
+    return 'User added successfully.';
   }
 
-  Future<List<Users>> fetchUsers() async {
+  Future<bool?> checkUserExists(String loginId, String password) async {
     final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('users');
-    return List.generate(maps.length, (i) => Users.fromJson(maps[i]));
+    final result = await db.query(
+      'users',
+      where: 'loginId = ? AND password = ?',
+      whereArgs: [loginId, password]
+      );
+
+    return result.isNotEmpty;
   }
 
   Future<int> updateUser(Users user) async {
@@ -53,7 +71,7 @@ class DatabaseService {
     return await db.update(
       'users',
       user.toJson(),
-      where: 'loginId = ?', // We update by loginId or another unique field
+      where: 'loginId = ?', // loginId unique field
       whereArgs: [user.loginId],
     );
   }
@@ -62,7 +80,7 @@ class DatabaseService {
     final db = await database;
     return await db.delete(
       'users',
-      where: 'loginId = ?', // We update by loginId or another unique field
+      where: 'loginId = ?', // loginId unique field
       whereArgs: [loginId],
     );
   }

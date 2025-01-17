@@ -15,14 +15,14 @@ class Signuppage extends StatefulWidget {
 class _SignuppageState extends State<Signuppage> {
   //valueNotifier
   final ValueNotifier<bool> _isPasswordVisible = ValueNotifier<bool>(true);
-  final ValueNotifier<bool> _isConfirmPasswordVisible = ValueNotifier<bool>(
-      true);
+  final ValueNotifier<bool> _isConfirmPasswordVisible =
+      ValueNotifier<bool>(true);
 
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController createLoginIdController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
-  TextEditingController();
+      TextEditingController();
   final FocusNode fullName = FocusNode();
   final FocusNode createLoginID = FocusNode();
   final FocusNode password = FocusNode();
@@ -39,21 +39,14 @@ class _SignuppageState extends State<Signuppage> {
     passwordController.dispose();
     confirmPasswordController.dispose();
 
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     // Fetch screen size
-    final screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-    final screenHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     // Determine if it's a small or large screen
     final isSmallScreen = screenWidth < 400 && screenHeight < 650;
@@ -118,7 +111,7 @@ class _SignuppageState extends State<Signuppage> {
                             width: 2.0,
                           ),
                           borderRadius:
-                          BorderRadius.circular(8), // Rounded corners
+                              BorderRadius.circular(8), // Rounded corners
                         ),
                         hoverColor: Colors.lightBlueAccent,
                       ),
@@ -163,7 +156,7 @@ class _SignuppageState extends State<Signuppage> {
                               width: 2.0,
                             ),
                             borderRadius:
-                            BorderRadius.circular(8), // Rounded corners
+                                BorderRadius.circular(8), // Rounded corners
                           ),
                           hoverColor: Colors.lightBlueAccent),
                     ),
@@ -196,7 +189,7 @@ class _SignuppageState extends State<Signuppage> {
                               suffixIcon: InkWell(
                                 onTap: () {
                                   _isPasswordVisible.value =
-                                  !_isPasswordVisible.value;
+                                      !_isPasswordVisible.value;
                                 },
                                 child: Icon(
                                   _isPasswordVisible.value
@@ -222,7 +215,7 @@ class _SignuppageState extends State<Signuppage> {
                                   width: 2.0,
                                 ),
                                 borderRadius:
-                                BorderRadius.circular(8), // Rounded corners
+                                    BorderRadius.circular(8), // Rounded corners
                               ),
                             ),
                           );
@@ -269,7 +262,7 @@ class _SignuppageState extends State<Signuppage> {
                               suffixIcon: InkWell(
                                 onTap: () {
                                   _isConfirmPasswordVisible.value =
-                                  !_isConfirmPasswordVisible.value;
+                                      !_isConfirmPasswordVisible.value;
                                 },
                                 child: Icon(
                                   _isConfirmPasswordVisible.value
@@ -295,12 +288,11 @@ class _SignuppageState extends State<Signuppage> {
                                   width: 2.0,
                                 ),
                                 borderRadius:
-                                BorderRadius.circular(8), // Rounded corners
+                                    BorderRadius.circular(8), // Rounded corners
                               ),
                             ),
                           );
-                        }
-                    ),
+                        }),
                   ),
                   SizedBox(
                     height: 35,
@@ -322,9 +314,8 @@ class _SignuppageState extends State<Signuppage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Utils.showSnackBar(
-                                context, "Terms of Service Pressed!!",
-                                Colors.blue);
+                            Utils.showSnackBar(context,
+                                "Terms of Service Pressed!!", Colors.blue);
                           },
                           child: Text('Terms of Service',
                               style: TextStyle(
@@ -346,9 +337,8 @@ class _SignuppageState extends State<Signuppage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Utils.showSnackBar(
-                                context, "Privacy Policy Pressed!!",
-                                Colors.blue);
+                            Utils.showSnackBar(context,
+                                "Privacy Policy Pressed!!", Colors.blue);
                           },
                           child: ClipRect(
                             child: Text('Privacy Policy.',
@@ -366,10 +356,7 @@ class _SignuppageState extends State<Signuppage> {
                     height: 10,
                   ),
                   Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
+                    width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.only(left: 20, right: 20),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -379,13 +366,33 @@ class _SignuppageState extends State<Signuppage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             )),
-                        onPressed: () {
+                        onPressed: () async {
                           String? error = SignUpViewModel().validateSignUp(
-                              fullNameController.text, createLoginIdController.text, passwordController.text, confirmPasswordController.text);
+                              fullNameController.text,
+                              createLoginIdController.text,
+                              passwordController.text,
+                              confirmPasswordController.text);
                           if (error != null) {
-                            Utils.showSnackBar(context, error,Colors.red);
+                            Utils.showSnackBar(context, error, Colors.red);
                           } else {
-                            SignUpViewModel().addUser(fullNameController.text, createLoginIdController.text, passwordController.text);
+                            String? result = await SignUpViewModel().addUser(
+                                fullNameController.text,
+                                createLoginIdController.text,
+                                passwordController.text);
+
+                            if (result == 'User added successfully.') {
+                              Utils.showSnackBar(
+                                  context, result as String, Colors.green);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()));
+                            } else if (result as String ==
+                                'Login ID is taken. Please create a new one.') {
+                              Utils.showSnackBar(context, result, Colors.red);
+                            } else {
+                              Utils.showSnackBar(context, result, Colors.red);
+                            }
                           }
                         },
                         child: Text(
