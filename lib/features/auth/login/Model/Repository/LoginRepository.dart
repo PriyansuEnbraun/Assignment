@@ -1,4 +1,4 @@
-import 'package:assignment/features/auth/signup/Model/Database/DatabaseService.dart';
+import 'package:assignment/features/auth/signup/Model/Data/DatabaseService.dart';
 
 class LoginRepository{
 

@@ -1,0 +1,103 @@
+[
+    {
+      "password": "password123",
+      "loginId": "user1",
+      "fullName": "John Doe"
+    },
+    {
+      "password": "securePass456",
+      "loginId": "user2",
+      "fullName": "Jane Smith"
+    },
+    {
+      "password": "mypassword789",
+      "loginId": "user3",
+      "fullName": "Michael Johnson"
+    },
+    {
+      "password": "abc123xyz",
+      "loginId": "user4",
+      "fullName": "Emily Davis"
+    },
+    {
+      "password": "passkey321",
+      "loginId": "user5",
+      "fullName": "Robert Brown"
+    },
+    {
+      "password": "safePass987",
+      "loginId": "user6",
+      "fullName": "Jessica Williams"
+    },
+    {
+      "password": "mySecure2023",
+      "loginId": "user7",
+      "fullName": "William Martinez"
+    },
+    {
+      "password": "alphaBeta123",
+      "loginId": "user8",
+      "fullName": "Sophia Garcia"
+    },
+    {
+      "password": "uniqueKey!@#",
+      "loginId": "user9",
+      "fullName": "James Miller"
+    },
+    {
+      "password": "qwerty12345",
+      "loginId": "user10",
+      "fullName": "Olivia Anderson"
+    },
+    {
+      "password": "secure2023",
+      "loginId": "user11",
+      "fullName": "Benjamin Thomas"
+    },
+    {
+      "password": "passmePlease!",
+      "loginId": "user12",
+      "fullName": "Charlotte Moore"
+    },
+    {
+      "password": "pa$$w0rd",
+      "loginId": "user13",
+      "fullName": "Daniel Jackson"
+    },
+    {
+      "password": "letmein123",
+      "loginId": "user14",
+      "fullName": "Mia Harris"
+    },
+    {
+      "password": "topSecret99",
+      "loginId": "user15",
+      "fullName": "Ethan Martin"
+    },
+    {
+      "password": "lockdown!2023",
+      "loginId": "user16",
+      "fullName": "Amelia Clark"
+    },
+    {
+      "password": "openSesame",
+      "loginId": "user17",
+      "fullName": "Alexander Robinson"
+    },
+    {
+      "password": "trustMe2023",
+      "loginId": "user18",
+      "fullName": "Isabella Young"
+    },
+    {
+      "password": "noOneKnows",
+      "loginId": "user19",
+      "fullName": "Henry Walker"
+    },
+    {
+      "password": "alwaysSafe!",
+      "loginId": "user20",
+      "fullName": "Emma Lee"
+    }
+  ]
+  

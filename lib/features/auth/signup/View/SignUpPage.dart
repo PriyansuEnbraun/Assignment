@@ -1,5 +1,4 @@
 import 'package:assignment/Utils/utils.dart';
-import 'package:assignment/features/auth/login/View/LoginPage.dart';
 import 'package:assignment/features/homescreen/View/HomePage.dart';
 import 'package:flutter/material.dart';
 
@@ -420,10 +419,7 @@ class _SignuppageState extends State<Signuppage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Loginpage()));
+                          Navigator.pop(context);
                         },
                         child: Text(
                           'Login',

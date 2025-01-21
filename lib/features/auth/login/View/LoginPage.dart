@@ -12,8 +12,6 @@ class Loginpage extends StatefulWidget {
   State<Loginpage> createState() => _LoginpageState();
 }
 
-class LoginCredentials {}
-
 class _LoginpageState extends State<Loginpage> {
 
   //valueNotifier

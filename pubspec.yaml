@@ -38,6 +38,7 @@ dependencies:
   path:
   sqflite: ^2.4.1
   provider:
+  http:
 
 
 
