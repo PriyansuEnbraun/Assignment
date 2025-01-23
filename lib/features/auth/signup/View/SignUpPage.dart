@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:assignment/Utils/utils.dart';
 import 'package:assignment/features/homescreen/View/HomePage.dart';
 import 'package:flutter/material.dart';
@@ -379,7 +381,7 @@ class _SignuppageState extends State<Signuppage> {
                                 createLoginIdController.text,
                                 passwordController.text);
 
-                            if (result == 'User added successfully.') {
+                            if (result == 'User created successfully') {
                               Utils.showSnackBar(
                                   context, result as String, Colors.green);
                               Navigator.push(
@@ -390,6 +392,7 @@ class _SignuppageState extends State<Signuppage> {
                                 'Login ID is taken. Please create a new one.') {
                               Utils.showSnackBar(context, result, Colors.red);
                             } else {
+                              log(result);
                               Utils.showSnackBar(context, result, Colors.red);
                             }
                           }
