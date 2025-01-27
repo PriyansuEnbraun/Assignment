@@ -25,14 +25,19 @@ class AuthBackendService {
         }),
       );
 
+      // Decode the response body
+      final Map<String, dynamic> responseBody = json.decode(response.body);
+
       if (response.statusCode == 201) {
-        return "User created successfully";
-      } else {
-        return "Error: ${response.statusCode} - ${response.reasonPhrase}";
+        return responseBody['message']?? "User created successfully";
+      }
+      else if (response.statusCode == 400) {
+      return responseBody['message'] ?? "Bad request";
       }
     } catch (e) {
       return 'Error: $e';
     }
+    return "Something went wrong";
   }
 
   // Login method

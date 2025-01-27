@@ -248,6 +248,7 @@ class _LoginpageState extends State<Loginpage> {
                               builder: (context) => Signuppage()));
                     },
                     style: TextButton.styleFrom(
+                      backgroundColor: Colors.white,
                         side: BorderSide(color: Colors.blue, width: 2),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
