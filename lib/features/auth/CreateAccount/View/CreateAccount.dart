@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:assignment/features/homescreen/View/HomePage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Utils/utils.dart';
+import '../../signup/ViewModel/SignUpViewModel.dart';
 
 class Createaccount extends StatefulWidget {
   const Createaccount({super.key});
@@ -46,7 +49,6 @@ class _CreateaccountState extends State<Createaccount> {
     super.dispose();
   }
 
-
   void _validateFields() {
     setState(() {
       fullNameError = _validateFullName(fullNameController.text);
@@ -58,7 +60,8 @@ class _CreateaccountState extends State<Createaccount> {
       passwordError = _validatePassword(passwordController.text);
       if (passwordError != null) return;
 
-      confirmPasswordError = _validateConfirmPassword(confirmPasswordController.text);
+      confirmPasswordError =
+          _validateConfirmPassword(confirmPasswordController.text);
     });
   }
 
@@ -75,7 +78,9 @@ class _CreateaccountState extends State<Createaccount> {
       return 'Password cannot be empty';
     } else if (value.length < 8 || value.length > 50) {
       return 'Password must be between 8 and 50 characters';
-    } else if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,50}$').hasMatch(value)) {
+    } else if (!RegExp(
+            r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,50}$')
+        .hasMatch(value)) {
       return 'Password must contain letters, numbers, and special characters';
     }
     return null;
@@ -100,19 +105,24 @@ class _CreateaccountState extends State<Createaccount> {
     final isSmallScreen = screenWidth < 400 && screenHeight < 650;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
           },
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: screenHeight,
+          child: LayoutBuilder(builder: (context, constraints) {
+            final isSmallScreen =
+                constraints.maxWidth < 400 || constraints.maxHeight < 650;
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight,
+                ),
+                child: IntrinsicHeight(
+                  child: Form(
+                    key: _formKey,
                     child: Center(
                       child: Column(
                         children: [
@@ -149,12 +159,13 @@ class _CreateaccountState extends State<Createaccount> {
                               decoration: InputDecoration(
                                 errorStyle: TextStyle(
                                   color: Colors.red,
-                                  fontSize: 10,
+                                  fontSize: isSmallScreen ? 8 : 10,
                                   fontFamily: 'Poppins',
                                 ),
                                 errorText: fullNameError,
                                 border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.red, width: 2),
+                                  borderSide:
+                                      BorderSide(color: Colors.red, width: 2),
                                 ),
                                 hintText: "Full Name",
                                 hintStyle: TextStyle(
@@ -174,12 +185,13 @@ class _CreateaccountState extends State<Createaccount> {
                                     // Border color when TextField is focused
                                     width: 2.0,
                                   ),
-                                  borderRadius:
-                                      BorderRadius.circular(8), // Rounded corners
+                                  borderRadius: BorderRadius.circular(
+                                      8), // Rounded corners
                                 ),
                                 hoverColor: Colors.lightBlueAccent,
                               ),
-                              onChanged: (value) => setState(() => fullNameError = _validateFullName(value)),
+                              onChanged: (value) => setState(() =>
+                                  fullNameError = _validateFullName(value)),
                             ),
                           ),
                           SizedBox(
@@ -206,11 +218,12 @@ class _CreateaccountState extends State<Createaccount> {
                                   errorText: loginIdError,
                                   errorStyle: TextStyle(
                                     color: Colors.red,
-                                    fontSize: 10,
+                                    fontSize: isSmallScreen ? 8 : 10,
                                     fontFamily: 'Poppins',
                                   ),
                                   border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.red, width: 2),
+                                    borderSide:
+                                        BorderSide(color: Colors.red, width: 2),
                                   ),
                                   hintText: "Create Login Id",
                                   hintStyle: TextStyle(
@@ -230,12 +243,12 @@ class _CreateaccountState extends State<Createaccount> {
                                       // Border color when TextField is focused
                                       width: 2.0,
                                     ),
-                                    borderRadius:
-                                        BorderRadius.circular(8), // Rounded corners
+                                    borderRadius: BorderRadius.circular(
+                                        8), // Rounded corners
                                   ),
                                   hoverColor: Colors.lightBlueAccent),
-                              onChanged: (value) => setState(() => loginIdError = _validateLoginId(value)),
-
+                              onChanged: (value) => setState(
+                                  () => loginIdError = _validateLoginId(value)),
                             ),
                           ),
                           SizedBox(
@@ -265,12 +278,13 @@ class _CreateaccountState extends State<Createaccount> {
                                     decoration: InputDecoration(
                                       errorStyle: TextStyle(
                                         color: Colors.red,
-                                        fontSize: 10,
+                                        fontSize: isSmallScreen ? 8 : 10,
                                         fontFamily: 'Poppins',
                                       ),
                                       errorText: passwordError,
                                       border: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.red, width: 2),
+                                        borderSide: BorderSide(
+                                            color: Colors.red, width: 2),
                                       ),
                                       hintText: "Password",
                                       suffixIcon: InkWell(
@@ -305,7 +319,9 @@ class _CreateaccountState extends State<Createaccount> {
                                             8), // Rounded corners
                                       ),
                                     ),
-                                    onChanged: (value) => setState(() => passwordError = _validatePassword(value)),
+                                    onChanged: (value) => setState(() =>
+                                        passwordError =
+                                            _validatePassword(value)),
                                   );
                                 }),
                           ),
@@ -336,7 +352,8 @@ class _CreateaccountState extends State<Createaccount> {
                                 builder: (context, value, child) {
                                   return TextFormField(
                                     focusNode: confirmPassword,
-                                    obscureText: _isConfirmPasswordVisible.value,
+                                    obscureText:
+                                        _isConfirmPasswordVisible.value,
                                     keyboardType: TextInputType.visiblePassword,
                                     cursorColor: Colors.blue,
                                     controller: confirmPasswordController,
@@ -348,12 +365,13 @@ class _CreateaccountState extends State<Createaccount> {
                                     decoration: InputDecoration(
                                       errorStyle: TextStyle(
                                         color: Colors.red,
-                                        fontSize: 10,
+                                        fontSize: isSmallScreen ? 8 : 10,
                                         fontFamily: 'Poppins',
                                       ),
                                       errorText: confirmPasswordError,
                                       border: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.red, width: 2),
+                                        borderSide: BorderSide(
+                                            color: Colors.red, width: 2),
                                       ),
                                       hintText: "Confirm password ",
                                       suffixIcon: InkWell(
@@ -388,7 +406,9 @@ class _CreateaccountState extends State<Createaccount> {
                                             8), // Rounded corners
                                       ),
                                     ),
-                                    onChanged: (value) => setState(() => confirmPasswordError = _validateConfirmPassword(value)),
+                                    onChanged: (value) => setState(() =>
+                                        confirmPasswordError =
+                                            _validateConfirmPassword(value)),
                                   );
                                 }),
                           ),
@@ -412,8 +432,10 @@ class _CreateaccountState extends State<Createaccount> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Utils.showSnackBar(context,
-                                        "Terms of Service Pressed!!", Colors.blue);
+                                    Utils.showSnackBar(
+                                        context,
+                                        "Terms of Service Pressed!!",
+                                        Colors.blue);
                                   },
                                   child: Text('Terms of Service',
                                       style: TextStyle(
@@ -435,8 +457,10 @@ class _CreateaccountState extends State<Createaccount> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Utils.showSnackBar(context,
-                                        "Privacy Policy Pressed!!", Colors.blue);
+                                    Utils.showSnackBar(
+                                        context,
+                                        "Privacy Policy Pressed!!",
+                                        Colors.blue);
                                   },
                                   child: ClipRect(
                                     child: Text('Privacy Policy.',
@@ -464,14 +488,35 @@ class _CreateaccountState extends State<Createaccount> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
                                     )),
-                                onPressed: () {
+                                onPressed: () async {
                                   _validateFields();
-                                  if (fullNameError == null && loginIdError == null && passwordError == null && confirmPasswordError == null) {
-                                    // If validation passes, navigate to the home screen
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => const HomePage()));
+                                  if (fullNameError == null &&
+                                      loginIdError == null &&
+                                      passwordError == null &&
+                                      confirmPasswordError == null) {
+                                    String? result = await SignUpViewModel()
+                                        .addUser(
+                                            fullNameController.text,
+                                            createLoginIdController.text,
+                                            passwordController.text);
+
+                                    if (result == 'User created successfully') {
+                                      Utils.showSnackBar(context,
+                                          result as String, Colors.green);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const HomePage()));
+                                    } else if (result as String ==
+                                        'Login ID is taken. Please create a new one.') {
+                                      Utils.showSnackBar(
+                                          context, result, Colors.red);
+                                    } else {
+                                      log(result);
+                                      Utils.showSnackBar(
+                                          context, result, Colors.red);
+                                    }
                                   }
                                 },
                                 child: Text(
@@ -512,14 +557,14 @@ class _CreateaccountState extends State<Createaccount> {
                               ),
                             ],
                           ),
-                          SizedBox(height: isSmallScreen ? 60 : 120),
+                          Spacer(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 'Enbraun Technologies Private Limited',
                                 style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: isSmallScreen ? 10 : 12,
                                     fontFamily: 'Poppins',
                                     color: Colors.grey),
                               ),
@@ -529,26 +574,27 @@ class _CreateaccountState extends State<Createaccount> {
                               Icon(
                                 Icons.copyright_outlined,
                                 color: Colors.grey,
-                                size: 15,
+                                size: isSmallScreen ? 12 : 15,
                               ),
                               SizedBox(width: 5),
                               Text(
                                 '2025',
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
-                                    fontSize: 12,
+                                    fontSize: isSmallScreen ? 10 : 12,
                                     color: Colors.grey),
-                              )
+                              ),
                             ],
-                          )
+                          ),
+                          SizedBox(height: isSmallScreen ? 5 : 15)
                         ],
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
+            );
+          }),
         ),
       ),
     );
