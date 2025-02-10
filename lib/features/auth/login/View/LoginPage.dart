@@ -1,3 +1,5 @@
+import 'package:assignment/features/auth/ForgotLoginId/View/ForgotLoginIdPage.dart';
+import 'package:assignment/features/auth/ForgotPassword/View/ForgotPasswordPage.dart';
 import 'package:assignment/features/auth/login/ViewModel/LoginViewModel.dart';
 import 'package:assignment/features/auth/signup/View/SignUpPage.dart';
 import 'package:assignment/features/homescreen/View/HomePage.dart';
@@ -128,7 +130,7 @@ class _LoginpageState extends State<Loginpage> {
                           suffixIcon: InkWell(
                             onTap: () {
                               _isPasswordVisible.value =
-                                  !_isPasswordVisible.value;
+                              !_isPasswordVisible.value;
                             },
                             child: Icon(_isPasswordVisible.value
                                 ? Icons.visibility_off_outlined
@@ -152,7 +154,7 @@ class _LoginpageState extends State<Loginpage> {
                               width: 2.0,
                             ),
                             borderRadius:
-                                BorderRadius.circular(8), // Rounded corners
+                            BorderRadius.circular(8), // Rounded corners
                           ),
                         ),
                       );
@@ -248,7 +250,7 @@ class _LoginpageState extends State<Loginpage> {
                               builder: (context) => Signuppage()));
                     },
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
+                        backgroundColor: Colors.white,
                         side: BorderSide(color: Colors.blue, width: 2),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -271,6 +273,7 @@ class _LoginpageState extends State<Loginpage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Forgotloginidpage()));
                         Utils.showSnackBar(
                             context, "Forgot Login Id Pressed!!",Colors.blue);
                       },
@@ -284,6 +287,7 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Forgotpasswordpage()));
                         Utils.showSnackBar(
                             context, "Forgot Password Pressed!!",Colors.blue);
                       },

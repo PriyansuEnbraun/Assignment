@@ -1,3 +1,4 @@
+import 'package:assignment/features/auth/CreateAccount/View/CreateAccount.dart';
 import 'package:assignment/features/auth/login/View/LoginPage.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Loginpage()
+      home: Createaccount()
     );
   }
 }
