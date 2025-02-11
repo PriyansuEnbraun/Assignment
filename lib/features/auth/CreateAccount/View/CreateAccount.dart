@@ -102,7 +102,7 @@ class _CreateaccountState extends State<Createaccount> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     // Determine if it's a small or large screen
-    final isSmallScreen = screenWidth < 400 && screenHeight < 650;
+    final isSmallPhoneScreen = screenWidth < 400 && screenHeight < 750;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -135,7 +135,7 @@ class _CreateaccountState extends State<Createaccount> {
                           SizedBox(height: 25),
                           Text("You're Almost There ! ",
                               style: TextStyle(
-                                  fontSize: isSmallScreen ? 15 : 20,
+                                  fontSize: isSmallPhoneScreen ? 15 : 20,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400)),
                           SizedBox(height: 25),
@@ -153,13 +153,13 @@ class _CreateaccountState extends State<Createaccount> {
                                     context, fullName, createLoginID);
                               },
                               style: TextStyle(
-                                  fontSize: isSmallScreen ? 15 : 20,
+                                  fontSize: isSmallPhoneScreen ? 15 : 20,
                                   fontFamily: 'Poppins',
                                   color: Colors.black),
                               decoration: InputDecoration(
                                 errorStyle: TextStyle(
                                   color: Colors.red,
-                                  fontSize: isSmallScreen ? 8 : 10,
+                                  fontSize: isSmallPhoneScreen ? 8 : 10,
                                   fontFamily: 'Poppins',
                                 ),
                                 errorText: fullNameError,
@@ -170,7 +170,7 @@ class _CreateaccountState extends State<Createaccount> {
                                 hintText: "Full Name",
                                 hintStyle: TextStyle(
                                     color: Colors.grey,
-                                    fontSize: isSmallScreen ? 15 : 18,
+                                    fontSize: isSmallPhoneScreen ? 15 : 18,
                                     fontFamily: 'Poppins'),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -211,14 +211,14 @@ class _CreateaccountState extends State<Createaccount> {
                                     context, createLoginID, password);
                               },
                               style: TextStyle(
-                                  fontSize: isSmallScreen ? 15 : 20,
+                                  fontSize: isSmallPhoneScreen ? 15 : 20,
                                   fontFamily: 'Poppins',
                                   color: Colors.black),
                               decoration: InputDecoration(
                                   errorText: loginIdError,
                                   errorStyle: TextStyle(
                                     color: Colors.red,
-                                    fontSize: isSmallScreen ? 8 : 10,
+                                    fontSize: isSmallPhoneScreen ? 8 : 10,
                                     fontFamily: 'Poppins',
                                   ),
                                   border: OutlineInputBorder(
@@ -228,7 +228,7 @@ class _CreateaccountState extends State<Createaccount> {
                                   hintText: "Create Login Id",
                                   hintStyle: TextStyle(
                                       color: Colors.grey,
-                                      fontSize: isSmallScreen ? 15 : 18,
+                                      fontSize: isSmallPhoneScreen ? 15 : 18,
                                       fontFamily: 'Poppins'),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -272,13 +272,13 @@ class _CreateaccountState extends State<Createaccount> {
                                           context, password, confirmPassword);
                                     },
                                     style: TextStyle(
-                                        fontSize: isSmallScreen ? 15 : 20,
+                                        fontSize: isSmallPhoneScreen ? 15 : 20,
                                         fontFamily: 'Poppins',
                                         color: Colors.black),
                                     decoration: InputDecoration(
                                       errorStyle: TextStyle(
                                         color: Colors.red,
-                                        fontSize: isSmallScreen ? 8 : 10,
+                                        fontSize: isSmallPhoneScreen ? 8 : 10,
                                         fontFamily: 'Poppins',
                                       ),
                                       errorText: passwordError,
@@ -300,7 +300,7 @@ class _CreateaccountState extends State<Createaccount> {
                                       ),
                                       hintStyle: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: isSmallScreen ? 15 : 18,
+                                          fontSize: isSmallPhoneScreen ? 15 : 18,
                                           fontFamily: 'Poppins'),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -336,7 +336,7 @@ class _CreateaccountState extends State<Createaccount> {
                                 Text(
                                   'Length 8-50 with numbers,letters and special characters',
                                   style: TextStyle(
-                                    fontSize: isSmallScreen ? 8 : 10,
+                                    fontSize: isSmallPhoneScreen ? 8 : 10,
                                     fontFamily: 'Poppins',
                                     color: Colors.black54,
                                   ),
@@ -359,13 +359,13 @@ class _CreateaccountState extends State<Createaccount> {
                                     controller: confirmPasswordController,
                                     maxLines: 1,
                                     style: TextStyle(
-                                        fontSize: isSmallScreen ? 15 : 20,
+                                        fontSize: isSmallPhoneScreen ? 15 : 20,
                                         fontFamily: 'Poppins',
                                         color: Colors.black),
                                     decoration: InputDecoration(
                                       errorStyle: TextStyle(
                                         color: Colors.red,
-                                        fontSize: isSmallScreen ? 8 : 10,
+                                        fontSize: isSmallPhoneScreen ? 8 : 10,
                                         fontFamily: 'Poppins',
                                       ),
                                       errorText: confirmPasswordError,
@@ -387,7 +387,7 @@ class _CreateaccountState extends State<Createaccount> {
                                       ),
                                       hintStyle: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: isSmallScreen ? 15 : 18,
+                                          fontSize: isSmallPhoneScreen ? 15 : 18,
                                           fontFamily: 'Poppins'),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -423,7 +423,7 @@ class _CreateaccountState extends State<Createaccount> {
                                 Text(
                                   'By signing up you agree to our',
                                   style: TextStyle(
-                                      fontSize: isSmallScreen ? 8 : 10,
+                                      fontSize: isSmallPhoneScreen ? 8 : 10,
                                       color: Colors.black54,
                                       fontFamily: 'Poppins'),
                                 ),
@@ -439,7 +439,7 @@ class _CreateaccountState extends State<Createaccount> {
                                   },
                                   child: Text('Terms of Service',
                                       style: TextStyle(
-                                          fontSize: isSmallScreen ? 8 : 10,
+                                          fontSize: isSmallPhoneScreen ? 8 : 10,
                                           color: Colors.blue,
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.bold)),
@@ -449,7 +449,7 @@ class _CreateaccountState extends State<Createaccount> {
                                 ),
                                 Text('and',
                                     style: TextStyle(
-                                        fontSize: isSmallScreen ? 8 : 10,
+                                        fontSize: isSmallPhoneScreen ? 8 : 10,
                                         color: Colors.black54,
                                         fontFamily: 'Poppins')),
                                 SizedBox(
@@ -465,7 +465,7 @@ class _CreateaccountState extends State<Createaccount> {
                                   child: ClipRect(
                                     child: Text('Privacy Policy.',
                                         style: TextStyle(
-                                            fontSize: isSmallScreen ? 8 : 10,
+                                            fontSize: isSmallPhoneScreen ? 8 : 10,
                                             color: Colors.blue,
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.bold)),
@@ -483,7 +483,7 @@ class _CreateaccountState extends State<Createaccount> {
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     elevation: 8,
-                                    padding: EdgeInsets.all(10),
+                                    padding: EdgeInsets.all(isSmallPhoneScreen ? 10 : 15),
                                     backgroundColor: Colors.blue,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
@@ -522,7 +522,7 @@ class _CreateaccountState extends State<Createaccount> {
                                 child: Text(
                                   "Let's Start",
                                   style: TextStyle(
-                                      fontSize: isSmallScreen ? 15 : 20,
+                                      fontSize: isSmallPhoneScreen ? 15 : 20,
                                       fontFamily: 'Poppins',
                                       color: Colors.white),
                                 )),
@@ -534,7 +534,7 @@ class _CreateaccountState extends State<Createaccount> {
                               Text(
                                 'Already have an account?',
                                 style: TextStyle(
-                                    fontSize: isSmallScreen ? 12 : 15,
+                                    fontSize: isSmallPhoneScreen ? 12 : 15,
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black87),
@@ -549,7 +549,7 @@ class _CreateaccountState extends State<Createaccount> {
                                 child: Text(
                                   'Login',
                                   style: TextStyle(
-                                      fontSize: isSmallScreen ? 12 : 15,
+                                      fontSize: isSmallPhoneScreen ? 12 : 15,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w500,
                                       color: Colors.blue),
@@ -564,7 +564,7 @@ class _CreateaccountState extends State<Createaccount> {
                               Text(
                                 'Enbraun Technologies Private Limited',
                                 style: TextStyle(
-                                    fontSize: isSmallScreen ? 10 : 12,
+                                    fontSize: isSmallPhoneScreen ? 10 : 12,
                                     fontFamily: 'Poppins',
                                     color: Colors.grey),
                               ),
@@ -574,19 +574,19 @@ class _CreateaccountState extends State<Createaccount> {
                               Icon(
                                 Icons.copyright_outlined,
                                 color: Colors.grey,
-                                size: isSmallScreen ? 12 : 15,
+                                size: isSmallPhoneScreen ? 12 : 15,
                               ),
                               SizedBox(width: 5),
                               Text(
                                 '2025',
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
-                                    fontSize: isSmallScreen ? 10 : 12,
+                                    fontSize: isSmallPhoneScreen ? 10 : 12,
                                     color: Colors.grey),
                               ),
                             ],
                           ),
-                          SizedBox(height: isSmallScreen ? 5 : 15)
+                          SizedBox(height: isSmallPhoneScreen ? 5 : 15)
                         ],
                       ),
                     ),

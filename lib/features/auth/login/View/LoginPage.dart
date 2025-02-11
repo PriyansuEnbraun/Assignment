@@ -73,7 +73,7 @@ class _LoginpageState extends State<Loginpage> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     // Determine if it's a small or large screen
-    final isSmallScreen = screenWidth < 400 && screenHeight < 750;
+    final isSmallPhoneScreen = screenWidth < 400 && screenHeight < 750;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -82,6 +82,8 @@ class _LoginpageState extends State<Loginpage> {
         child: GestureDetector(onTap: () {
           FocusScope.of(context).unfocus();
         }, child: LayoutBuilder(builder: (context, constraints) {
+          final isSmallScreen =
+              constraints.maxWidth < 400 || constraints.maxHeight < 650;
           return SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -104,7 +106,7 @@ class _LoginpageState extends State<Loginpage> {
                         SizedBox(height: 25),
                         Text("Login to your account ",
                             style: TextStyle(
-                                fontSize: isSmallScreen ? 15 : 20,
+                                fontSize: isSmallPhoneScreen ? 15 : 20,
                                 fontFamily: 'Poppins')),
                         SizedBox(height: 30),
                         Container(
@@ -121,13 +123,13 @@ class _LoginpageState extends State<Loginpage> {
                             },
                             maxLines: 1,
                             style: TextStyle(
-                                fontSize: isSmallScreen ? 15 : 20,
+                                fontSize: isSmallPhoneScreen ? 15 : 20,
                                 fontFamily: 'Poppins',
                                 color: Colors.black),
                             decoration: InputDecoration(
                               errorStyle: TextStyle(
                                 color: Colors.red,
-                                fontSize: isSmallScreen?8:10,
+                                fontSize: isSmallPhoneScreen?8:10,
                                 fontFamily: 'Poppins',
                               ),
                               errorText: loginIdError,
@@ -142,7 +144,7 @@ class _LoginpageState extends State<Loginpage> {
                                   color: Colors.black),
                               hintStyle: TextStyle(
                                   color: Colors.grey,
-                                  fontSize: isSmallScreen ? 15 : 18,
+                                  fontSize: isSmallPhoneScreen ? 15 : 18,
                                   fontFamily: 'Poppins'),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -178,13 +180,13 @@ class _LoginpageState extends State<Loginpage> {
                                   controller: passwordController,
                                   maxLines: 1,
                                   style: TextStyle(
-                                      fontSize: isSmallScreen ? 15 : 20,
+                                      fontSize: isSmallPhoneScreen ? 15 : 20,
                                       fontFamily: 'Poppins',
                                       color: Colors.black),
                                   decoration: InputDecoration(
                                     errorStyle: TextStyle(
                                       color: Colors.red,
-                                      fontSize: isSmallScreen?8:10,
+                                      fontSize: isSmallPhoneScreen?8:10,
                                       fontFamily: 'Poppins',
                                     ),
                                     errorText: passwordError,
@@ -209,7 +211,7 @@ class _LoginpageState extends State<Loginpage> {
                                     ),
                                     hintStyle: TextStyle(
                                         color: Colors.grey,
-                                        fontSize: isSmallScreen ? 15 : 18,
+                                        fontSize: isSmallPhoneScreen ? 15 : 18,
                                         fontFamily: 'Poppins'),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -243,7 +245,7 @@ class _LoginpageState extends State<Loginpage> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 backgroundColor: Colors.blue,
-                                padding: EdgeInsets.all(10)),
+                                padding: EdgeInsets.all(isSmallPhoneScreen ? 10 : 15)),
                             onPressed: () async {
                               _validateFields();
                               if (loginIdError == null && passwordError == null){
@@ -271,7 +273,7 @@ class _LoginpageState extends State<Loginpage> {
                                 style: TextStyle(
                                   color: Colors.white,
                                   // Text color
-                                  fontSize: isSmallScreen ? 15 : 20,
+                                  fontSize: isSmallPhoneScreen ? 15 : 20,
                                   // Font size]
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Poppins', // Custom font
@@ -285,14 +287,14 @@ class _LoginpageState extends State<Loginpage> {
                           'Or',
                           style: TextStyle(
                               color: Colors.grey,
-                              fontSize: isSmallScreen ? 15 : 15,
+                              fontSize: isSmallPhoneScreen ? 15 : 15,
                               fontFamily: 'Poppins'),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          padding:  EdgeInsets.only(left: 20,right: 20),
                           child: TextButton(
                               onPressed: () {
                                 Navigator.push(
@@ -301,6 +303,7 @@ class _LoginpageState extends State<Loginpage> {
                                         builder: (context) => Createaccount()));
                               },
                               style: TextButton.styleFrom(
+                                padding: EdgeInsets.all(isSmallPhoneScreen?10:15),
                                   backgroundColor: Colors.white,
                                   side:
                                       BorderSide(color: Colors.blue, width: 2),
@@ -310,7 +313,7 @@ class _LoginpageState extends State<Loginpage> {
                                 child: Text(
                                   'Sign Up',
                                   style: TextStyle(
-                                      fontSize: isSmallScreen ? 15 : 20,
+                                      fontSize: isSmallPhoneScreen ? 15 : 20,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w400,
                                       color: Colors.blue),
@@ -337,7 +340,7 @@ class _LoginpageState extends State<Loginpage> {
                                   'Forgot Login Id?',
                                   style: TextStyle(
                                       color: Colors.blue,
-                                      fontSize: isSmallScreen ? 12 : 15,
+                                      fontSize: isSmallPhoneScreen ? 12 : 15,
                                       fontFamily: 'Poppins'),
                                 ),
                               ),
@@ -355,7 +358,7 @@ class _LoginpageState extends State<Loginpage> {
                                   'Forgot Password?',
                                   style: TextStyle(
                                       color: Colors.blue,
-                                      fontSize: isSmallScreen ? 12 : 15,
+                                      fontSize: isSmallPhoneScreen ? 12 : 15,
                                       fontFamily: 'Poppins'),
                                 ),
                               )
@@ -371,7 +374,7 @@ class _LoginpageState extends State<Loginpage> {
                               Text(
                                 'Enbraun Technologies Private Limited',
                                 style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: isSmallPhoneScreen?10:12,
                                     fontFamily: 'Poppins',
                                     color: Colors.grey),
                               ),
@@ -381,14 +384,14 @@ class _LoginpageState extends State<Loginpage> {
                               Icon(
                                 Icons.copyright_outlined,
                                 color: Colors.grey,
-                                size: 15,
+                                size: isSmallPhoneScreen?12:15,
                               ),
                               SizedBox(width: 5),
                               Text(
                                 '2025',
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
-                                    fontSize: 12,
+                                    fontSize: isSmallPhoneScreen?10:12,
                                     color: Colors.grey),
                               )
                             ],
