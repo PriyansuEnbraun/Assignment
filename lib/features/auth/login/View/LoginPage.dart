@@ -1,7 +1,7 @@
-import 'package:assignment/features/auth/CreateAccount/View/CreateAccount.dart';
 import 'package:assignment/features/auth/ForgotLoginId/View/ForgotLoginIdPage.dart';
 import 'package:assignment/features/auth/ForgotPassword/View/ForgotPasswordPage.dart';
 import 'package:assignment/features/auth/login/ViewModel/LoginViewModel.dart';
+import 'package:assignment/features/auth/signup/View/SignUpPage.dart';
 import 'package:assignment/features/homescreen/View/HomePage.dart';
 import 'package:flutter/material.dart';
 
@@ -300,7 +300,7 @@ class _LoginpageState extends State<Loginpage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Createaccount()));
+                                        builder: (context) => Signuppage()));
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.all(isSmallPhoneScreen?10:15),
