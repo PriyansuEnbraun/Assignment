@@ -138,7 +138,7 @@ class _SignuppageState extends State<Signuppage> {
                                   fontSize: isSmallPhoneScreen ? 15 : 20,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400)),
-                          SizedBox(height: 25),
+                          SizedBox(height: 30),
                           Container(
                             margin: EdgeInsets.only(left: 20, right: 20),
                             child: TextFormField(
@@ -175,7 +175,7 @@ class _SignuppageState extends State<Signuppage> {
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Colors.grey,
-                                    width: 2,
+                                    width: 1,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
@@ -183,7 +183,7 @@ class _SignuppageState extends State<Signuppage> {
                                   borderSide: BorderSide(
                                     color: Colors.blue,
                                     // Border color when TextField is focused
-                                    width: 2.0,
+                                    width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(
                                       8), // Rounded corners
@@ -225,7 +225,7 @@ class _SignuppageState extends State<Signuppage> {
                                     borderSide:
                                     BorderSide(color: Colors.red, width: 2),
                                   ),
-                                  hintText: "Create Login Id",
+                                  hintText: "Create Login ID",
                                   hintStyle: TextStyle(
                                       color: Colors.grey,
                                       fontSize: isSmallPhoneScreen ? 15 : 18,
@@ -233,7 +233,7 @@ class _SignuppageState extends State<Signuppage> {
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Colors.grey,
-                                      width: 2,
+                                      width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -241,7 +241,7 @@ class _SignuppageState extends State<Signuppage> {
                                     borderSide: BorderSide(
                                       color: Colors.blue,
                                       // Border color when TextField is focused
-                                      width: 2.0,
+                                      width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(
                                         8), // Rounded corners
@@ -305,7 +305,7 @@ class _SignuppageState extends State<Signuppage> {
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.grey,
-                                          width: 2,
+                                          width: 1,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
@@ -313,7 +313,7 @@ class _SignuppageState extends State<Signuppage> {
                                         borderSide: BorderSide(
                                           color: Colors.blue,
                                           // Border color when TextField is focused
-                                          width: 2.0,
+                                          width: 1.0,
                                         ),
                                         borderRadius: BorderRadius.circular(
                                             8), // Rounded corners
@@ -392,7 +392,7 @@ class _SignuppageState extends State<Signuppage> {
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.grey,
-                                          width: 2,
+                                          width: 1,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
@@ -400,7 +400,7 @@ class _SignuppageState extends State<Signuppage> {
                                         borderSide: BorderSide(
                                           color: Colors.blue,
                                           // Border color when TextField is focused
-                                          width: 2.0,
+                                          width: 1.0,
                                         ),
                                         borderRadius: BorderRadius.circular(
                                             8), // Rounded corners
@@ -482,6 +482,7 @@ class _SignuppageState extends State<Signuppage> {
                             margin: EdgeInsets.only(left: 20, right: 20),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
+                                  shadowColor: Colors.lightBlueAccent,
                                     elevation: 8,
                                     padding: EdgeInsets.all(isSmallPhoneScreen ? 10 : 15),
                                     backgroundColor: Colors.blue,

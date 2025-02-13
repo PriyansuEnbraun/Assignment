@@ -134,14 +134,18 @@ class _LoginpageState extends State<Loginpage> {
                               ),
                               errorText: loginIdError,
                               border: OutlineInputBorder(
+                                gapPadding: 25,
                                 borderSide: BorderSide(color: Colors.red, width: 2),
                               ),
                               hintText: "Login ID",
-                              prefixIcon: Image.asset(
-                                  'core/Assets/images/profile.png',
-                                  width: 10,
-                                  height: 10,
-                                  color: Colors.black),
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                child: Image.asset(
+                                    'core/Assets/images/profile.png',
+                                    width: 10,
+                                    height: 10,
+                                    color: Colors.black),
+                              ),
                               hintStyle: TextStyle(
                                   color: Colors.grey,
                                   fontSize: isSmallPhoneScreen ? 15 : 18,
@@ -149,7 +153,7 @@ class _LoginpageState extends State<Loginpage> {
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.grey,
-                                  width: 2,
+                                  width: 1,
                                 ),
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -157,7 +161,7 @@ class _LoginpageState extends State<Loginpage> {
                                 borderSide: BorderSide(
                                   color: Colors.blue,
                                   // Border color when TextField is focused
-                                  width: 2.0,
+                                  width: 1.0,
                                 ),
                                 borderRadius:
                                     BorderRadius.circular(8), // Rounded corners
@@ -166,6 +170,7 @@ class _LoginpageState extends State<Loginpage> {
                             onChanged: (value) => setState(() => loginIdError = _validateLoginId(value)),
                           ),
                         ),
+
                         SizedBox(height: 20),
                         Container(
                           margin: EdgeInsets.only(left: 20, right: 20),
@@ -194,11 +199,14 @@ class _LoginpageState extends State<Loginpage> {
                                       borderSide: BorderSide(color: Colors.red, width: 2),
                                     ),
                                     hintText: "Password",
-                                    prefixIcon: Image.asset(
-                                      'core/Assets/images/key.png',
-                                      width: 10,
-                                      height: 10,
-                                      color: Colors.black87,
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 12),
+                                      child: Image.asset(
+                                        'core/Assets/images/key.png',
+                                        width: 10,
+                                        height: 10,
+                                        color: Colors.black87,
+                                      ),
                                     ),
                                     suffixIcon: InkWell(
                                       onTap: () {
@@ -216,7 +224,7 @@ class _LoginpageState extends State<Loginpage> {
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Colors.grey,
-                                        width: 2,
+                                        width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
@@ -224,7 +232,7 @@ class _LoginpageState extends State<Loginpage> {
                                       borderSide: BorderSide(
                                         color: Colors.blue,
                                         // Border color when TextField is focused
-                                        width: 2.0,
+                                        width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(
                                           8), // Rounded corners
@@ -234,13 +242,53 @@ class _LoginpageState extends State<Loginpage> {
                                 );
                               }),
                         ),
-                        SizedBox(
-                          height: 55,
+                        SizedBox(height: 15),
+                        Container(
+                          margin: EdgeInsets.only(left: 25, right: 25),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Forgotloginidpage()));
+                                },
+                                child: Text(
+                                  'Forgot Login Id?',
+                                  style: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: isSmallPhoneScreen ? 12 : 15,
+                                      fontFamily: 'Poppins'),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Forgotpasswordpage()));
+                                },
+                                child: Text(
+                                  'Forgot Password?',
+                                  style: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: isSmallPhoneScreen ? 12 : 15,
+                                      fontFamily: 'Poppins'),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
+                        SizedBox(height: 50),
                         Container(
                           margin: EdgeInsets.only(left: 20, right: 20),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              shadowColor: Colors.lightBlueAccent,
                                 elevation: 8,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -282,16 +330,8 @@ class _LoginpageState extends State<Loginpage> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Or',
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: isSmallPhoneScreen ? 15 : 15,
-                              fontFamily: 'Poppins'),
-                        ),
                         SizedBox(
-                          height: 10,
+                          height: 30,
                         ),
                         Padding(
                           padding:  EdgeInsets.only(left: 20,right: 20),
@@ -306,7 +346,7 @@ class _LoginpageState extends State<Loginpage> {
                                 padding: EdgeInsets.all(isSmallPhoneScreen?10:15),
                                   backgroundColor: Colors.white,
                                   side:
-                                      BorderSide(color: Colors.blue, width: 2),
+                                      BorderSide(color: Colors.grey, width: 1),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
                               child: Center(
@@ -316,54 +356,9 @@ class _LoginpageState extends State<Loginpage> {
                                       fontSize: isSmallPhoneScreen ? 15 : 20,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w400,
-                                      color: Colors.blue),
+                                      color: Colors.black87),
                                 ),
                               )),
-                        ),
-                        SizedBox(height: 25),
-                        Container(
-                          margin: EdgeInsets.only(left: 25, right: 25),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              Forgotloginidpage()));
-                                  Utils.showSnackBar(context,
-                                      "Forgot Login Id Pressed!!", Colors.blue);
-                                },
-                                child: Text(
-                                  'Forgot Login Id?',
-                                  style: TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: isSmallPhoneScreen ? 12 : 15,
-                                      fontFamily: 'Poppins'),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              Forgotpasswordpage()));
-                                  Utils.showSnackBar(context,
-                                      "Forgot Password Pressed!!", Colors.blue);
-                                },
-                                child: Text(
-                                  'Forgot Password?',
-                                  style: TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: isSmallPhoneScreen ? 12 : 15,
-                                      fontFamily: 'Poppins'),
-                                ),
-                              )
-                            ],
-                          ),
                         ),
                         Spacer(),
                         Padding(
